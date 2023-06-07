@@ -32,7 +32,7 @@ public class Tank extends GameObject {
 
     public void setProjectile() {
         this.projectile++;
-        if(this.projectile>1)
+        if(this.projectile>2)
         {
             this.projectile=0;
         }
@@ -130,27 +130,32 @@ public class Tank extends GameObject {
     }
 
     // Стрелять по направлению
-    public void shootDir() {
+    public void shootDir() throws InterruptedException {
         if(isActive && numberShoot >=3) {
-            SimpleProjectile projectile = new SimpleProjectile(this.getPosition(), 100);
-            //Smart_projectile projectile = new Smart_projectile(this.getPosition());
-            projectile.addProjectileActionListener(new ProjectileObserver());
-            getPosition().setProjectile(projectile);
-            //projectile.fly(getPosition().getField().getCell(new Point(2,2)));
-            projectile.fly(this.direction);
+            switch (projectile) {
+                case (0) -> {
+                    SimpleProjectile projectile = new SimpleProjectile(this.getPosition(), 100);
+                    projectile.addProjectileActionListener(new ProjectileObserver());
+                    getPosition().setProjectile(projectile);
+                    projectile.fly(this.direction);
+                }
+                case (2) -> {
+                    AboutProjectile aboutProjectile = new AboutProjectile(this.getPosition(), 10000);
+                    aboutProjectile.addProjectileActionListener(new ProjectileObserver());
+                    getPosition().setProjectile(aboutProjectile);
+                    aboutProjectile.fly(this.direction);
+                }
+            }
         }
     }
 
     // Стрелять в ячейку
     public void shootCell() throws InterruptedException {
         if(isActive && numberShoot >=3 && projectileCell!=null) {
-            //Simple_projectile projectile = new Simple_projectile(this.getPosition());
             SmartProjectile projectile = new SmartProjectile(this.getPosition(), 10);
             projectile.addProjectileActionListener(new ProjectileObserver());
             getPosition().setProjectile(projectile);
-            //projectile.fly(getPosition().getField().getCell(new Point(2,2)));
             projectile.fly(this.projectileCell);
-            //projectile.fly(direction);
             getPosition().getField().removeProjectile();
             fireTankFiredSmart();
             fireTankFired();

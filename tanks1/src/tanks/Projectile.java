@@ -31,12 +31,11 @@ public abstract class Projectile {
     }
 
     // Снаряд летит с указанием направления или ячейки
-    public void fly(Direction direction){};
+    public void fly(Direction direction) throws InterruptedException {};
 
     public void fly(Cell cell) throws InterruptedException {};
 
     // Переместиться
     public void move(Cell oldPosition, Cell newPosition) throws InterruptedException {
-
     }
 }

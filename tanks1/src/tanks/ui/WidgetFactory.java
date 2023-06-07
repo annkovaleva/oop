@@ -127,6 +127,12 @@ public class WidgetFactory {
             return item;
         }
 
+        if(projectile instanceof AboutProjectile aboutProjectile) {
+            AboutProjectileWidget item = new AboutProjectileWidget(aboutProjectile);
+            projectiles.put(projectile, item);
+            return item;
+        }
+
         return null;
     }
 

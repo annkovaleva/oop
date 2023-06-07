@@ -171,7 +171,9 @@ public class TankWidget extends CellItemWidget {
                     }
                     if(tank.getProjectile()==1){
                         tank.shootCell();
-
+                    }
+                    if(tank.getProjectile()==2){
+                        tank.shootDir();
                     }
                 }
             }
@@ -213,6 +215,9 @@ public class TankWidget extends CellItemWidget {
                 }
                 if(tank.getProjectile()==0) {
                     label.setText("Снаряд: простой");
+                }
+                if(tank.getProjectile()==2) {
+                    label.setText("Снаряд: окружной");
                 }
             }
         }

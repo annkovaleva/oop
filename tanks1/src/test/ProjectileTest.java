@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProjectileTest {
 
     @Test
-    public void test_shoot_in_wall_back_to_back() {
+    public void test_shoot_in_wall_back_to_back() throws InterruptedException {
         Game game;
         Tank tank;
 
@@ -26,7 +26,7 @@ public class ProjectileTest {
     }
 
     @Test
-    public void test_shoot_in_wall_with_distance() {
+    public void test_shoot_in_wall_with_distance() throws InterruptedException {
         Game game;
         Tank tank;
 
@@ -41,7 +41,7 @@ public class ProjectileTest {
 
     //Этот тест почему-то надо запускать отдельно, и он проходит
     @Test
-    public void test_kill_headquarter() {
+    public void test_kill_headquarter() throws InterruptedException {
         Game game;
         Tank tank;
 
